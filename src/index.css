@@ -1,0 +1,246 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* ────── Base – Netflix black ────── */
+  --color-base-100: oklch(12% 0.02 25);     /* #1a1a1a – true Netflix black */
+  --color-base-200: oklch(9%  0.03 25);     /* #141414 – slightly darker */
+  --color-base-300: oklch(6%  0.04 25);     /* #0a0a0a – deepest */
+  --color-base-content: oklch(96% 0.01 25); /* #f5f5f1 – Netflix off-white */
+
+  /* ────── Primary – Netflix red (buttons, links) ────── */
+  --color-primary: oklch(58% 0.68 30);          /* #e50914 – official Netflix red */
+  --color-primary-content: oklch(98% 0.01 30); /* white text on red */
+
+  /* ────── Secondary – dark red-gray for cards / panels ────── */
+  --color-secondary: oklch(22% 0.08 30);       /* #221f1f – rich dark gray-red */
+  --color-secondary-content: oklch(96% 0.01 30);
+
+  /* ────── Accent – hover glow / active states ────── */
+  --color-accent: oklch(62% 0.60 30);          /* #ff0b16 – brighter red glow */
+  --color-accent-content: oklch(98% 0.01 30);
+
+  /* ────── Neutral – subtle borders ────── */
+  --color-neutral: oklch(18% 0.03 25);         /* #2a2a2a */
+  --color-neutral-content: oklch(90% 0.01 25);
+
+  /* ────── Feedback colors (kept distinct, Netflix-safe) ────── */
+  --color-info:    oklch(65% 0.30 220);  --color-info-content:    oklch(98% 0.01 220);
+  --color-success: oklch(65% 0.35 140);  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.35 80);   --color-warning-content: oklch(20% 0.05 80);
+  --color-error:   oklch(60% 0.55 30);   --color-error-content:   oklch(98% 0.01 30);
+}
+.banner {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2988%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient2989%26quot%3b)'%3e%3c/rect%3e%3cpath d='M1440 0L1148.4 0L1440 219.63z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1148.4 0L1440 219.63L1440 230.57999999999998L705.9100000000001 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M705.91 0L1440 230.57999999999998L1440 396.34L591.9499999999999 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M591.9499999999999 0L1440 396.34L1440 509.84L585.66 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L202.28 560L0 475.42z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 475.42L202.28 560L786.03 560L0 470.67z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 470.67L786.03 560L1152.74 560L0 347.93z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 347.93L1152.74 560L1236.22 560L0 256.81z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2988'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2989'%3e%3cstop stop-color='rgba(0%2c 0%2c 0%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(255%2c 0%2c 41%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.bg-base-400 {
+  background-color: oklch(25% 0.15 25)
+}
+
+.footer-custom{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2629%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient2630%26quot%3b)'%3e%3c/rect%3e%3cpath d='M292.902%2c534.851C330.818%2c536.141%2c367.934%2c519.005%2c387.421%2c486.454C407.416%2c453.055%2c405.705%2c411.691%2c387.104%2c377.496C367.585%2c341.613%2c333.742%2c313.508%2c292.902%2c312.697C250.797%2c311.861%2c210.852%2c335.969%2c191.991%2c373.622C174.696%2c408.148%2c188.42%2c447.645%2c208.907%2c480.378C227.883%2c510.696%2c257.156%2c533.634%2c292.902%2c534.851' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1081.421659498531 585.3686414124447L1150.9164362858837 489.71728707515274 1055.2650819485916 420.2225102878001 985.770305161239 515.8738646250921z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M308.3467060134586 266.36149447416403L414.2028362082622 237.99742987458262 385.8387716086808 132.14129967977897 279.98264141387716 160.50536427936038z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1269.2620093946307 434.6562049945447L1344.5831091848002 515.4281956141691 1425.3550998044245 440.10709582399966 1350.034000014255 359.3351052043752z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1266.786%2c175.193C1305.036%2c174.14%2c1338.409%2c152.087%2c1358.158%2c119.312C1378.638%2c85.323%2c1385.116%2c43.994%2c1367.164%2c8.605C1347.439%2c-30.28%2c1310.387%2c-60.552%2c1266.786%2c-60.814C1222.805%2c-61.079%2c1185.257%2c-31.28%2c1164.294%2c7.385C1144.332%2c44.204%2c1144.431%2c88.853%2c1166.261%2c124.596C1187.218%2c158.909%2c1226.594%2c176.3%2c1266.786%2c175.193' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1085.2630264825632 532.2575453157432L1239.1987853655805 573.6617847415861 1205.4877876651794 438.45435791434704z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M362.94398893838 130.71521603083994L239.95905337395413 38.039419734635615 147.2832570777498 161.0243552990615 270.2681926421757 253.70015159526582z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M701.365%2c387.987C739.665%2c390.545%2c775.243%2c364.632%2c791.821%2c330.011C806.625%2c299.095%2c793.079%2c264.353%2c774.295%2c235.68C757.645%2c210.264%2c731.69%2c193.819%2c701.365%2c191.929C666.922%2c189.783%2c627.728%2c195.425%2c610.788%2c225.491C594.027%2c255.239%2c613.041%2c289.357%2c629.666%2c319.182C646.951%2c350.192%2c665.942%2c385.621%2c701.365%2c387.987' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M221.61563976442173 582.3424065662709L327.253762027253 580.4984862832782 325.4098417442603 474.860364020447 219.77171948142902 476.7042843034397z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M506.308%2c592.982C553.415%2c593.145%2c601.173%2c574.081%2c623.533%2c532.619C645.02%2c492.775%2c628.828%2c446.472%2c606.579%2c407.048C583.818%2c366.718%2c552.529%2c327.764%2c506.308%2c324.907C455.737%2c321.781%2c406.745%2c348.955%2c381.994%2c393.166C357.752%2c436.469%2c364.261%2c489.676%2c390.477%2c531.814C415.198%2c571.55%2c459.51%2c592.82%2c506.308%2c592.982' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M83.93708532207718 141.89057628832376L202.02938385142753 110.24784026504929 170.38664782815306-7.844458264301068 52.294349298802715 23.798277758973413z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M527.143069009369 292.9685196164973L492.1705592620409 196.88233878405674 396.0843784296004 231.85484853138485 431.05688817692845 327.9410293638254z' fill='rgba(174%2c 120%2c 120%2c 0.25)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2629'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2630'%3e%3cstop stop-color='rgba(177%2c 92%2c 92%2c 1)' offset='0.01'%3e%3c/stop%3e%3cstop stop-color='rgba(84%2c 0%2c 0%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.menu a.active {
+  @apply text-primary underline
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.button {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 50%;
+  cursor: pointer;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+  border: none;
+}
+
+.bell {
+  width: 18px;
+}
+
+.bell path {
+  fill: white;
+}
+
+
+.button:hover .bell {
+  animation: bellRing 0.9s both;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+
+.button:active {
+  transform: scale(0.8);
+}
+
+
+/* From Uiverse.io by adamgiebl */ 
+/* From Uiverse.io by cssbuttons-io */ 
+.ViewBtn {
+  position: relative;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 0, 0);
+}
+
+.ViewBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+}
+
+.ViewBtn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(255, 0, 0, 0.2);
+}
+
+.ViewBtn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.ViewBtn::after {
+  background-color: #ff0000;
+}
+
+.ViewBtn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* From Uiverse.io by mrhyddenn */ 
+.genre {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid rgb(255, 61, 61);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.genre:hover {
+  background: rgb(255, 61, 61);
+  box-shadow: 0 0 30px 5px rgba(236, 0, 0, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.genre:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.genre::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.genre:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
