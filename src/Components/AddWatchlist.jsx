@@ -26,15 +26,22 @@ const AddWatchlist = ({ movie }) => {
 
       // Refresh context so Watchlist updates immediately
       fetchWatchlistMovies();
-    } catch (err) {
-      Swal.fire({
-        title: "Failed to add!",
-        text: err.message,
-        icon: "error",
-      });
-    } finally {
-      setLoading(false);
-    }
+    }catch (err) {
+  let message = err.message;
+
+  // Customize message for null email / not logged in
+  if (message.includes("Cannot read properties of null") || message.includes("email")) {
+    message = "Please Login/Sign Up first";
+  }
+
+  Swal.fire({
+    title: "Failed to add!",
+    text: message,
+    icon: "error",
+  });
+} finally {
+  setLoading(false);
+}
   };
 
   return (
