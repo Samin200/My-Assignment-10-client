@@ -39,9 +39,6 @@ const Navbar = () => {
       <NavLink to="/my-collection" className="hover:text-primary">
         My Collection
       </NavLink>
-        <NavLink to="/allmovies" className="hover:text-primary sm:hidden">
-        Search
-      </NavLink>
       {user && (
         <NavLink to="/movies/addmovies" className="hover:text-primary">
           Add Movies
