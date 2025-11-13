@@ -1,6 +1,6 @@
 # MovieMaster Pro
 
-Live Site: [[sparkly-pastelito-d10807.netlify.app](https://sparkly-pastelito-d10807.netlify.app/allmovies)]
+Live Site: [sparkly-pastelito](https://sparkly-pastelito-d10807.netlify.app/allmovies)
 
 ---
 
