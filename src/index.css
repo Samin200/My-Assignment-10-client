@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'animate.css';
 @plugin "daisyui";
 @plugin "daisyui/theme" {
   name: "mytheme";
@@ -6,29 +7,26 @@
   prefersdark: true;
   color-scheme: dark;
 
-  /* ────── Base – Netflix black ────── */
-  --color-base-100: oklch(12% 0.02 25);     /* #1a1a1a – true Netflix black */
-  --color-base-200: oklch(9%  0.03 25);     /* #141414 – slightly darker */
-  --color-base-300: oklch(6%  0.04 25);     /* #0a0a0a – deepest */
-  --color-base-content: oklch(96% 0.01 25); /* #f5f5f1 – Netflix off-white */
+  
+  --color-base-100: oklch(12% 0.02 25);
+    --color-base-200: oklch(9% 0.03 25);
+    --color-base-300: oklch(6% 0.04 25);
+    --color-base-content: oklch(96% 0.01 25);
 
-  /* ────── Primary – Netflix red (buttons, links) ────── */
-  --color-primary: oklch(58% 0.68 30);          /* #e50914 – official Netflix red */
-  --color-primary-content: oklch(98% 0.01 30); /* white text on red */
-
-  /* ────── Secondary – dark red-gray for cards / panels ────── */
-  --color-secondary: oklch(22% 0.08 30);       /* #221f1f – rich dark gray-red */
+  --color-primary: oklch(58% 0.68 30);
+    --color-primary-content: oklch(98% 0.01 30);
+  
+  
+    --color-secondary: oklch(22% 0.08 30);
   --color-secondary-content: oklch(96% 0.01 30);
 
-  /* ────── Accent – hover glow / active states ────── */
-  --color-accent: oklch(62% 0.60 30);          /* #ff0b16 – brighter red glow */
+  --color-accent: oklch(62% 0.60 30);
   --color-accent-content: oklch(98% 0.01 30);
 
-  /* ────── Neutral – subtle borders ────── */
-  --color-neutral: oklch(18% 0.03 25);         /* #2a2a2a */
+  --color-neutral: oklch(18% 0.03 25);
   --color-neutral-content: oklch(90% 0.01 25);
 
-  /* ────── Feedback colors (kept distinct, Netflix-safe) ────── */
+  
   --color-info:    oklch(65% 0.30 220);  --color-info-content:    oklch(98% 0.01 220);
   --color-success: oklch(65% 0.35 140);  --color-success-content: oklch(98% 0.01 140);
   --color-warning: oklch(80% 0.35 80);   --color-warning-content: oklch(20% 0.05 80);
@@ -50,7 +48,7 @@
   @apply text-primary underline
 }
 
-/* From Uiverse.io by vinodjangid07 */ 
+
 .button {
   width: 50px;
   height: 50px;
@@ -79,7 +77,7 @@
   animation: bellRing 0.9s both;
 }
 
-/* bell ringing animation keyframes*/
+
 @keyframes bellRing {
   0%,
   100% {
@@ -112,8 +110,7 @@
 }
 
 
-/* From Uiverse.io by adamgiebl */ 
-/* From Uiverse.io by cssbuttons-io */ 
+
 .ViewBtn {
   position: relative;
   font-size: 17px;
@@ -171,7 +168,7 @@
   display: none;
 }
 
-/* From Uiverse.io by mrhyddenn */ 
+
 .genre {
   position: relative;
   padding: 10px 20px;

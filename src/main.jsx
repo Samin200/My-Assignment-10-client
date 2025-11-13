@@ -19,6 +19,8 @@ import NotFound from "./Pages/NotFound.jsx";
 import ErrorBoundary from "./Pages/ErrorBoundary.jsx";
 import ManageMovies from "./Pages/ManageMovies.jsx";
 import AddMovies from "./Pages/AddMovies.jsx";
+import UpdateMovies from "./Pages/UpdateMovies.jsx";
+import Watchlist from "./Pages/Watchlist.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,11 +63,25 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/addmovies",
+        path: "movies/addmovies",
         element: (
           <PrivateRouter>
             <AddMovies></AddMovies>
           </PrivateRouter>
+        ),
+      },
+      {
+        path: "movies/update/:id",
+        element: (
+          <PrivateRouter>
+            <UpdateMovies></UpdateMovies>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "watchlist",
+        element: (
+          <Watchlist></Watchlist>
         ),
       },
       { path: "*", Component: NotFound },

@@ -8,7 +8,11 @@ const MyCollection = () => {
   const navigate = useNavigate();
 
   // Filter movies added by the logged-in user
-  const myMovies = movies.filter((movie) => movie.addedBy === user?.email);
+  // Filter movies added by the logged-in user
+const myMovies =
+  user?.email === "saminsafwan1@gmail.com"
+    ? movies // super user sees all movies
+    : movies.filter((movie) => movie.addedBy === user?.email);
 
   const handleCardClick = (id) => {
     navigate(`/movies/manage/${id}`);
@@ -19,7 +23,9 @@ const MyCollection = () => {
       <h2 className="text-2xl text-center md:text-4xl font-bold text-base-content px-4 mt-8 mb-4">
         My Collection
       </h2>
-      <p className="text-center font-bold text-gray-300">Click on movie which you want to edit</p>
+      <p className="text-center font-bold text-gray-300">
+        Click on movie which you want to edit
+      </p>
 
       {myMovies.length === 0 ? (
         <p className="text-center text-gray-500 my-10">
@@ -30,7 +36,7 @@ const MyCollection = () => {
           {myMovies.map((movie) => (
             <div
               key={movie._id}
-              className="flex-none w-36 sm:w-40 md:w-44 lg:w-48 snap-center cursor-pointer"
+              className="flex-none w-39 sm:w-40 md:w-44 lg:w-48 snap-center cursor-pointer"
               onClick={() => handleCardClick(movie._id)}
             >
               <MovieCard movie={movie} />

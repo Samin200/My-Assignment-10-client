@@ -62,19 +62,24 @@ const ProfileAndEdit = () => {
 
   return (
     <div className="relative flex justify-center items-center h-screen max-sm:px-5 ">
-      <div className={`relative w-full max-w-sm ${
-        !flipped? 'h-[450px]' : 'h-[480px]'
-        } perspective`}>
+      <div
+        className={`relative w-full max-w-sm ${
+          !flipped ? "h-[450px]" : "h-[480px]"
+        } perspective`}
+      >
         <div
           className={`relative w-full h-full transition-transform duration-700 transform ${
             flipped ? "rotate-y-180" : ""
           }`}
           style={{ transformStyle: "preserve-3d" }}
         >
-          {/* Front - Profile */}
+          {}
           <div
             className="absolute w-full h-full flex flex-col items-center justify-center p-6 card bg-black border-red-500/60 border-2 shadow-red-500 shadow-2xl"
-            style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+            style={{
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+            }}
           >
             <img
               src={
@@ -96,7 +101,7 @@ const ProfileAndEdit = () => {
             </button>
           </div>
 
-          {/* Back - Edit */}
+          {}
           <div
             className="absolute w-full h-full rotate-y-180 flex flex-col items-center justify-center p-6 card bg-black border-red-500/60 border-2 shadow-red-500 shadow-2xl"
             style={{

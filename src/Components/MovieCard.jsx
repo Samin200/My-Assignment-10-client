@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
         <img
           src={movie.posterUrl}
           alt={movie.title}
-          className="w-full h-72 object-cover rounded-xl"  // 👈 fixed height here
+          className="w-full h-72 object-cover rounded-xl" // 👈 fixed height here
           loading="lazy"
         />
 
@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
           <FaStar /> {movie.rating}
         </div>
 
-        {/* Hover Overlay */}
+        {}
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex flex-col justify-end p-4">
           <h3 className="text-white font-bold text-lg">{movie.title}</h3>
           <p className="text-neutral-300 text-sm">

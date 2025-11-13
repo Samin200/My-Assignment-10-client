@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { useParams, useNavigate, Link } from "react-router";
 import Swal from "sweetalert2";
 import { auth } from "../Firebase/firebase.init";
+import axios from "axios";
 
 const ManageMovie = () => {
   const { movies, setMovies } = useContext(AuthContext);
@@ -11,12 +12,10 @@ const ManageMovie = () => {
 
   const movie = movies.find((m) => m._id === id);
 
-
-
-  
   // Redirect if movie not found
   useEffect(() => {
     if (!movie) {
+      window.location.reload()
       Swal.fire({
         icon: "warning",
         title: "Movie not found",
@@ -46,13 +45,14 @@ const ManageMovie = () => {
 
     if (result.isConfirmed) {
       try {
-        await fetch(`http://localhost:5020/movies/${id}`, { method: "DELETE" });
+        navigate("/my-collection");
+        await axios.delete(`http://localhost:5020/movies/${id}`);
 
         setMovies(movies.filter((m) => m._id !== id));
 
         Swal.fire("Deleted!", "Movie has been deleted.", "success").then(() => {
-          navigate("/my-collection");
         });
+
       } catch (err) {
         Swal.fire("Error!", "Failed to delete movie: " + err.message, "error");
       }
@@ -60,31 +60,37 @@ const ManageMovie = () => {
   };
 
   // check ownership
-if (!movie) return <p className="text-center mt-10">Movie not found</p>;
-if (movie.addedBy !== auth.currentUser.email) {
-  return <p className="text-center mt-10 text-red-500 flex justify-center items-center relative h-[60vh]"><p>You are not allowed to manage this movie.</p></p>;
-}
-
+  if (!movie) return <p className="text-center mt-10">Movie not found</p>;
+  if (movie.addedBy !== auth.currentUser.email) {
+    return (
+      <p className="text-center mt-10 text-red-500 flex justify-center items-center relative h-[60vh]">
+        <p>You are not allowed to manage this movie.</p>
+      </p>
+    );
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 p-4">
       <div className="shadow-lg rounded-lg w-full max-w-lg p-6">
-        <Link to={'/my-collection'} className="flex items-center gap-2 group cursor-pointer mb-4">
-      {/* circular arrow */}
-      <span className="relative w-8 h-8 flex items-center justify-center rounded-full border-2 border-gray-200 transition-colors duration-300 group-hover:border-red-500">
-        <svg
-          className="w-4 h-4 fill-gray-200 rotate-180"
-          viewBox="0 0 46 40"
-          xmlns="http://www.w3.org/2000/svg"
+        <Link
+          to={"/my-collection"}
+          className="flex items-center gap-2 group cursor-pointer mb-4"
         >
-          <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z" />
-        </svg>
-      </span>
+          {}
+          <span className="relative w-8 h-8 flex items-center justify-center rounded-full border-2 border-gray-200 transition-colors duration-300 group-hover:border-red-500">
+            <svg
+              className="w-4 h-4 fill-gray-200 rotate-180"
+              viewBox="0 0 46 40"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z" />
+            </svg>
+          </span>
 
-      {/* text */}
-      <span className="font-medium text-base-content transition-colors duration-300 group-hover:text-red-500">
-        Go Back
-      </span>
-    </Link>
+          {}
+          <span className="font-medium text-base-content transition-colors duration-300 group-hover:text-red-500">
+            Go Back
+          </span>
+        </Link>
         <h2 className="text-2xl font-bold mb-4 text-center text-base-content">
           {movie.title}
         </h2>
@@ -95,14 +101,30 @@ if (movie.addedBy !== auth.currentUser.email) {
             alt={movie.title}
             className="rounded-lg mx-auto mb-4"
           />
-          <p><strong>Genre:</strong> {movie.genre}</p>
-          <p><strong>Year:</strong> {movie.releaseYear}</p>
-          <p><strong>Director:</strong> {movie.director}</p>
-          <p><strong>Cast:</strong> {movie.cast}</p>
-          <p><strong>Rating:</strong> {movie.rating}</p>
-          <p><strong>Duration:</strong> {movie.duration} min</p>
-          <p><strong>Language:</strong> {movie.language}</p>
-          <p><strong>Country:</strong> {movie.country}</p>
+          <p>
+            <strong>Genre:</strong> {movie.genre}
+          </p>
+          <p>
+            <strong>Year:</strong> {movie.releaseYear}
+          </p>
+          <p>
+            <strong>Director:</strong> {movie.director}
+          </p>
+          <p>
+            <strong>Cast:</strong> {movie.cast}
+          </p>
+          <p>
+            <strong>Rating:</strong> {movie.rating}
+          </p>
+          <p>
+            <strong>Duration:</strong> {movie.duration} min
+          </p>
+          <p>
+            <strong>Language:</strong> {movie.language}
+          </p>
+          <p>
+            <strong>Country:</strong> {movie.country}
+          </p>
           <p className="mt-2">{movie.plotSummary}</p>
         </div>
 

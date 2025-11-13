@@ -35,15 +35,15 @@ const Home = () => {
               .map((movie) => (
                 <div
                   key={movie._id}
-                  className="flex-none w-36 sm:w-40 md:w-44 lg:w-48 snap-center"
+                  className="flex-none w-39 sm:w-40 md:w-44 lg:w-48 snap-center"
                 >
                   <MovieCard movie={movie} />
                 </div>
               ))}
           </div>
 
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-linear-to-r from-base-100 to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-linear-to-l from-base-100 to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:bg-linear-to-r from-base-100 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:bg-linear-to-l from-base-100 to-transparent" />
         </div>
       </div>
       <div className=" mb-5 mx-7 flex flex-col gap-3">
@@ -58,15 +58,15 @@ const Home = () => {
               .map((movie) => (
                 <div
                   key={movie._id}
-                  className="flex-none w-36 sm:w-40 md:w-44 lg:w-48 snap-center"
+                  className="flex-none w-39 sm:w-40 md:w-44 lg:w-48 snap-center"
                 >
                   <MovieCard movie={movie} />
                 </div>
               ))}
           </div>
 
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-linear-to-r from-base-100 to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-linear-to-l from-base-100 to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:bg-linear-to-r from-base-100 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:bg-linear-to-l from-base-100 to-transparent" />
         </div>
       </div>
       <div className="reltive">
@@ -77,13 +77,17 @@ const Home = () => {
                 movie.genre.split(", ").map((g) => g.trim())
               )
             ),
-          ]
-            
-            .map((genre, index) => (
-              <div onClick={() => {genreFilter(genre)}} className="genre flex-none w-fit snap-center " key={index}>
-                {genre}
-              </div>
-            ))}
+          ].map((genre, index) => (
+            <div
+              onClick={() => {
+                genreFilter(genre);
+              }}
+              className="genre flex-none w-fit snap-center "
+              key={index}
+            >
+              {genre}
+            </div>
+          ))}
         </div>
       </div>
       <AboutPlatform></AboutPlatform>

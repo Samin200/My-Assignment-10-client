@@ -78,10 +78,10 @@ const Login_SignUp = () => {
         style={{ perspective: "1000px" }}
       >
         <div
-          className="grid grid-cols-6 gap-4 w-full h-full"
+          className="grid grid-cols-6 gap-4 w-full relative max-sm:top-70 max-sm:right-70 h-screen sm:h-full translate-z-30"
           style={{
             transform:
-              "rotateX(30deg) rotateZ(20deg) translateY(-60px) translateZ(600px) translateX(-40px)",
+              "rotateY(20deg) rotateZ(10deg) translateY(-200px) translateZ(400px) translateX(70px)",
             transformOrigin: "bottom left",
           }}
         >
@@ -95,17 +95,17 @@ const Login_SignUp = () => {
           ))}
         </div>
 
-        {/* Overlay for readability */}
+        {}
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       </div>
-      {/* Container for 3D flip */}
+      {}
       <div
-  className={`relative w-full max-w-sm ${
-    flipped ? "h-[410px]" : "h-[400px]"
-  } perspective`}
-  style={{ perspective: "1000px" }}
->
-        {/* Inner flip div */}
+        className={`relative w-full max-w-sm ${
+          flipped ? "h-[410px]" : "h-[400px]"
+        } perspective`}
+        style={{ perspective: "1000px" }}
+      >
+        {}
         <div
           className={`relative w-full h-full transition-transform duration-700 transform ${
             flipped ? "rotate-y-180" : ""
@@ -114,7 +114,7 @@ const Login_SignUp = () => {
             transformStyle: "preserve-3d",
           }}
         >
-          {/* Front side - Login */}
+          {}
           <div
             className="absolute w-full h-full backface-hidden max-sm:px-5"
             style={{
@@ -164,8 +164,9 @@ const Login_SignUp = () => {
                 <button className="btn btn-primary w-full" type="submit">
                   Login
                 </button>
-                                <button
-                  onClick={googleLogin} type="submit"
+                <button
+                  onClick={googleLogin}
+                  type="submit"
                   className="btn btn-outline w-full flex items-center justify-center mt-4"
                 >
                   <FcGoogle className="mr-2 text-lg" /> Continue with Google
@@ -180,9 +181,9 @@ const Login_SignUp = () => {
             </div>
           </div>
 
-          {/* Back side - Signup */}
+          {}
           <div
-            className="absolute w-full h-full backface-hidden rotate-y-180"
+            className="absolute w-full h-full backface-hidden rotate-y-180 max-sm:px-5"
             style={{
               WebkitBackfaceVisibility: "hidden",
               backfaceVisibility: "hidden",
@@ -229,7 +230,9 @@ const Login_SignUp = () => {
                     {showPassword ? <FiEyeOff></FiEyeOff> : <FiEye></FiEye>}
                   </div>
                 </div>
-                <button className="btn btn-primary w-full " type="submit">Sign Up</button>
+                <button className="btn btn-primary w-full " type="submit">
+                  Sign Up
+                </button>
                 <button
                   onClick={googleLogin}
                   className="btn btn-outline w-full flex items-center justify-center mt-4"

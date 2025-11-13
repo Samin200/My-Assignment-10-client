@@ -3,8 +3,8 @@ import Button from "../Components/Button";
 
 const GetStarted = () => {
   return (
-    <div className="banner h-screen bg-cover bg-center flex justify-center items-center" >
-      <div className="text-center bg-black/10 p-10 rounded-lg shadow-2xl shadow-rose-400">
+    <div className="  banner h-screen bg-cover bg-center flex justify-center items-center max-sm:px-4" >
+      <div className="animate__animated animate__backInDown text-center bg-black/10 p-10 rounded-lg shadow-2xl shadow-rose-400">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
           Movie Master Pro
         </h1>

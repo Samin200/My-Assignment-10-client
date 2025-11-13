@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    /* smooth background */
+
     background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.05) 30%,
@@ -32,7 +32,6 @@ const StyledWrapper = styled.div`
     overflow: hidden;
   }
 
-  /* outside circle */
   .loader::before {
     content: "";
     position: absolute;
@@ -43,18 +42,20 @@ const StyledWrapper = styled.div`
     animation: loader-spin 2s linear infinite;
   }
 
-  /* rotating circle */
   .loader::after {
     content: "";
     position: absolute;
     inset: 10%;
     border-radius: 50%;
-    background: conic-gradient(from 90deg, rgba(255, 255, 255, 0.2), transparent);
+    background: conic-gradient(
+      from 90deg,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     filter: blur(2px);
     animation: loader-spin-reverse 1.5s linear infinite;
   }
 
-  /* center circle */
   .loader__inner {
     position: absolute;
     top: 50%;
@@ -68,7 +69,6 @@ const StyledWrapper = styled.div`
     animation: loader-pulse 1s ease-in-out infinite;
   }
 
-  /* Container */
   .loader__orbit {
     position: absolute;
     top: 0;
@@ -78,7 +78,6 @@ const StyledWrapper = styled.div`
     animation: orbit-rotate 3s linear infinite;
   }
 
-  /* dots */
   .loader__dot {
     position: absolute;
     left: 50%;
@@ -89,7 +88,6 @@ const StyledWrapper = styled.div`
     border-radius: 50%;
   }
 
-  /* 4 dots */
   .loader__dot:nth-child(1) {
     transform: rotate(0deg) translate(60px);
   }
@@ -102,8 +100,6 @@ const StyledWrapper = styled.div`
   .loader__dot:nth-child(4) {
     transform: rotate(270deg) translate(60px);
   }
-
-  /* Animations */
 
   @keyframes loader-spin {
     0% {
@@ -140,6 +136,7 @@ const StyledWrapper = styled.div`
     100% {
       transform: rotate(360deg);
     }
-  }`;
+  }
+`;
 
 export default Loader;

@@ -19,8 +19,8 @@ const StyledWrapper = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    background: #fff; /* off-white bg */
-    color: rgba(255, 0, 41, 1); /* red text by default */
+    background: #fff;
+    color: rgba(255, 0, 41, 1);
     font-family: "Montserrat", sans-serif;
     font-size: 1.125em;
     font-weight: 700;
@@ -38,10 +38,10 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 0%;
     height: 100%;
-    background: rgba(255, 0, 41, 1); /* red hover bg */
+    background: rgba(255, 0, 41, 1);
     top: 0;
     left: 0;
-    z-index: 0; /* behind the text */
+    z-index: 0;
     transition: width 0.4s ease-in-out;
   }
 
@@ -51,12 +51,12 @@ const StyledWrapper = styled.div`
 
   .btn span {
     position: relative;
-    z-index: 1; /* above the pseudo-element */
+    z-index: 1;
     transition: color 0.4s ease-in-out;
   }
 
   .btn:hover span {
-    color: #ffffff; /* white text on hover */
+    color: #ffffff;
   }
 `;
 

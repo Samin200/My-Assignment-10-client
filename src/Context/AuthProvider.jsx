@@ -21,9 +21,42 @@ const AuthProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [allMovies, setAllMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(auth.currentUser);
+  const [user, setUser] = useState(null);
   const [totalUser, setTotalUser] = useState([]);
+  const [watchlist, setWatchlistMovies] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
+  const [checkingAuth, setCheckingAuth] = useState(true);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setCheckingAuth(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const fetchWatchlistMovies = async () => {
+    if (!user) return;
+
+    setIsFetching(true);
+    try {
+      const res = await axios.get(
+        `http://localhost:5020/users/watchlist?email=${user.email}`
+      );
+      setWatchlistMovies(res.data || []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsFetching(false);
+    }
+  };
+
+  // Fetch watchlist on user change
+  useEffect(() => {
+    if (user) {
+      fetchWatchlistMovies();
+    }
+  }, [user]);
   // Fetch total users
   useEffect(() => {
     const totalUserGet = async () => {
@@ -43,16 +76,7 @@ const AuthProvider = ({ children }) => {
     );
   };
 
-const [checkingAuth, setCheckingAuth] = useState(true);
 
-useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
-    setUser(user);
-    setCheckingAuth(false); // done checking
-  });
-
-  return () => unsubscribe();
-}, []);
 
   const UpdateProfile = async (name, photoURL) => {
     try {
@@ -67,12 +91,13 @@ useEffect(() => {
           icon: "success",
           title: "Profile Updated",
         });
-        await axios.patch(`http://localhost:5020/users?email=${auth.currentUser.email}`, {
-          name: name,
-          photoURL: photoURL,
-        });
-        console.log(name,photoURL);
-        
+        await axios.patch(
+          `http://localhost:5020/users/profile?email=${auth.currentUser.email}`,
+          {
+            name: name,
+            photoURL: photoURL,
+          }
+        );
       }
     } catch (err) {
       Swal.fire({
@@ -152,6 +177,7 @@ useEffect(() => {
         email,
         password,
         photoURL: "",
+        watchlist: [],
       });
 
       Swal.fire({
@@ -216,6 +242,7 @@ useEffect(() => {
           email: user.email,
           password: "",
           photoURL: user.photoURL,
+          watchlist: [],
         });
       }
 
@@ -238,6 +265,7 @@ useEffect(() => {
     user,
     movies,
     setMovies,
+
     loading,
     setLoading,
     allMovies,
@@ -249,6 +277,10 @@ useEffect(() => {
     DeleteAccount,
     totalUser,
     checkingAuth,
+    setCheckingAuth,
+    watchlist,
+    isFetching,
+    fetchWatchlistMovies,
   };
 
   return (

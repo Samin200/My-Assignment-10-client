@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import MovieCard from "../Components/MovieCard";
 import { useLocation } from "react-router";
+import SearchBar from "../Components/SearchBar";
 
 
 const AllMovies = () => {
@@ -42,17 +43,16 @@ const AllMovies = () => {
         All Movies
       </h2>
 
+      <div className="sm:hidden"><SearchBar></SearchBar></div>
+
       {allMovies.length === 0 ? (
-        
-          <p className="text-center text-gray-500 my-10">No movies found.</p>
-          
-        
+        <p className="text-center text-gray-500 my-10">No movies found.</p>
       ) : (
         <div className="place-items-center my-14 scrollbar-hide grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 overflow-x-auto overflow-y-hidden snap-x snap-mandatory">
           {allMovies.map((movie) => (
             <div
               key={movie._id}
-              className="flex-none w-36 sm:w-40 md:w-44 lg:w-48 snap-center"
+              className="flex-none w-39 sm:w-40 md:w-44 lg:w-48 snap-center"
             >
               <MovieCard movie={movie} />
             </div>

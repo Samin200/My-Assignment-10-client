@@ -51,6 +51,7 @@ const AddMovie = () => {
       });
       setMovies([...movies , newMovie])
       navigate("/my-collection");
+      window.location.reload()
     } catch (err) {
       Swal.fire("Error", err.message, "error");
     }
@@ -74,7 +75,7 @@ const AddMovie = () => {
           <input
             type="text"
             name="genre"
-            placeholder="Genre"
+            placeholder="Genre (e.g., Adventure, Sci-Fi). Separate genres with , and space"
             value={movie.genre}
             onChange={handleChange}
             className="input input-bordered w-full"
