@@ -15,7 +15,9 @@ const MovieDetails = () => {
   const fetchMovie = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5020/movies/${id}`);
+      const { data } = await axios.get(
+        `https://my-assignment-10-server-jet.vercel.app/movies/${id}`
+      );
       setMovie(data);
     } catch (err) {
       console.error("Fetch error:", err);
@@ -38,15 +40,18 @@ const MovieDetails = () => {
 
     try {
       setLoading(true);
-      await axios.post(`http://localhost:5020/movies/${id}/review`, {
-        userId: user.uid,
-        name: user.displayName || "Anonymous",
-        photoURL:
-          user.photoURL ||
-          "https://static.vecteezy.com/system/resources/previews/024/983/914/large_2x/simple-user-default-icon-free-png.png",
-        text: reviewText,
-        rating: reviewRating,
-      });
+      await axios.post(
+        `https://my-assignment-10-server-jet.vercel.app/movies/${id}/review`,
+        {
+          userId: user.uid,
+          name: user.displayName || "Anonymous",
+          photoURL:
+            user.photoURL ||
+            "https://static.vecteezy.com/system/resources/previews/024/983/914/large_2x/simple-user-default-icon-free-png.png",
+          text: reviewText,
+          rating: reviewRating,
+        }
+      );
       setReviewText("");
       setReviewRating(5);
       fetchMovie(); // Refresh reviews
@@ -62,9 +67,12 @@ const MovieDetails = () => {
   const handleLike = async () => {
     if (!user) return alert("Login to like");
     try {
-      await axios.post(`http://localhost:5020/movies/${id}/like`, {
-        userId: user.uid,
-      });
+      await axios.post(
+        `https://my-assignment-10-server-jet.vercel.app/movies/${id}/like`,
+        {
+          userId: user.uid,
+        }
+      );
       fetchMovie();
     } catch (err) {
       console.error(err);
@@ -74,9 +82,12 @@ const MovieDetails = () => {
   const handleDislike = async () => {
     if (!user) return alert("Login to dislike");
     try {
-      await axios.post(`http://localhost:5020/movies/${id}/dislike`, {
-        userId: user.uid,
-      });
+      await axios.post(
+        `https://my-assignment-10-server-jet.vercel.app/movies/${id}/dislike`,
+        {
+          userId: user.uid,
+        }
+      );
       fetchMovie();
     } catch (err) {
       console.error(err);

@@ -15,7 +15,7 @@ const AddWatchlist = ({ movie }) => {
     setLoading(true);
     try {
       await axios.patch(
-        `http://localhost:5020/users/watchlist?email=${auth.currentUser.email}`,
+        `https://my-assignment-10-server-jet.vercel.app/users/watchlist?email=${auth.currentUser.email}`,
         { movie: { ...movie, _id: movie._id.toString() } }
       );
 

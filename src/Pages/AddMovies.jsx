@@ -42,7 +42,10 @@ const AddMovie = () => {
     const newMovie = { ...movie, addedBy: user.email };
 
     try {
-      await axios.post("http://localhost:5020/movies", newMovie);
+      await axios.post(
+        "https://my-assignment-10-server-jet.vercel.app/movies",
+        newMovie
+      );
       Swal.fire({
         icon: "success",
         title: "Movie Added Successfully!",

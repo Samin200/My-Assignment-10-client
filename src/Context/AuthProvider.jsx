@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
     setIsFetching(true);
     try {
       const res = await axios.get(
-        `http://localhost:5020/users/watchlist?email=${user.email}`
+        `https://my-assignment-10-server-jet.vercel.app/users/watchlist?email=${user.email}`
       );
       setWatchlistMovies(res.data || []);
     } catch (err) {
@@ -60,7 +60,9 @@ const AuthProvider = ({ children }) => {
   // Fetch total users
   useEffect(() => {
     const totalUserGet = async () => {
-      const res = await axios.get("http://localhost:5020/users");
+      const res = await axios.get(
+        "https://my-assignment-10-server-jet.vercel.app/users"
+      );
       setTotalUser(res.data);
     };
     totalUserGet();
@@ -76,8 +78,6 @@ const AuthProvider = ({ children }) => {
     );
   };
 
-
-
   const UpdateProfile = async (name, photoURL) => {
     try {
       setLoading(true);
@@ -92,7 +92,7 @@ const AuthProvider = ({ children }) => {
           title: "Profile Updated",
         });
         await axios.patch(
-          `http://localhost:5020/users/profile?email=${auth.currentUser.email}`,
+          `https://my-assignment-10-server-jet.vercel.app/users/profile?email=${auth.currentUser.email}`,
           {
             name: name,
             photoURL: photoURL,
@@ -135,7 +135,9 @@ const AuthProvider = ({ children }) => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5020/movies");
+        const res = await axios.get(
+          "https://my-assignment-10-server-jet.vercel.app/movies"
+        );
         setMovies(res.data);
         setAllMovies(res.data);
       } catch (err) {
@@ -172,7 +174,7 @@ const AuthProvider = ({ children }) => {
       await updateProfile(res.user, { displayName: name });
       setUser(res.user);
 
-      await axios.post("http://localhost:5020/users", {
+      await axios.post("https://my-assignment-10-server-jet.vercel.app/users", {
         name,
         email,
         password,
@@ -235,15 +237,20 @@ const AuthProvider = ({ children }) => {
         icon: "success",
       });
 
-      const { data } = await axios.get(`http://localhost:5020/users?email=${user.email}`);
+      const { data } = await axios.get(
+        `https://my-assignment-10-server-jet.vercel.app/users?email=${user.email}`
+      );
       if (data.length === 0) {
-        await axios.post("http://localhost:5020/users", {
-          name: user.displayName,
-          email: user.email,
-          password: "",
-          photoURL: user.photoURL,
-          watchlist: [],
-        });
+        await axios.post(
+          "https://my-assignment-10-server-jet.vercel.app/users",
+          {
+            name: user.displayName,
+            email: user.email,
+            password: "",
+            photoURL: user.photoURL,
+            watchlist: [],
+          }
+        );
       }
 
       setUser(user);

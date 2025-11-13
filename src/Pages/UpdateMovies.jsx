@@ -14,7 +14,9 @@ useEffect(() => {
   const fetchDetail = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5020/movies/${id}`);
+      const res = await axios.get(
+        `https://my-assignment-10-server-jet.vercel.app/movies/${id}`
+      );
       setMovieDetail(res.data); // store actual movie data
     } catch (err) {
       console.error("Error fetching movie detail:", err);
@@ -79,7 +81,10 @@ useEffect(() => {
   const updatedMovie = { ...movie, addedBy: user.email };
 
   try {
-    await axios.patch(`http://localhost:5020/movies/${id}`, updatedMovie);
+    await axios.patch(
+      `https://my-assignment-10-server-jet.vercel.app/movies/${id}`,
+      updatedMovie
+    );
 
     Swal.fire({
       icon: "success",

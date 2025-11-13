@@ -46,7 +46,9 @@ const ManageMovie = () => {
     if (result.isConfirmed) {
       try {
         navigate("/my-collection");
-        await axios.delete(`http://localhost:5020/movies/${id}`);
+        await axios.delete(
+          `https://my-assignment-10-server-jet.vercel.app/movies/${id}`
+        );
 
         setMovies(movies.filter((m) => m._id !== id));
 
